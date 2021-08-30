@@ -1,0 +1,49 @@
+### Author
+
+Cristiano Luís Turbino de França e Silva
+e-mail: cristianoltfs@gmail.com
+
+### Reviewer (optional)
+
+### Video (optional)
+
+https://www.youtube.com/watch?v=i-2EedNKFBI&list=PLRvwRusArl39IYHrsQRj89onSVvFeWIIP&index=13
+
+### Description
+
+to be continued...
+
+### List of acronyms (standard)
+
+MB = Model Builder
+OS = Object Selector
+IE = Input Editor
+KI = Key Inputs
+OV = Output Viewer
+* = modify Value/Name or show
+
+### Configure simmulation
+
+Units / TimeUnit / min
+
+### Model building
+
+MB-OS / Process Flow / EntityLogger
+* EntityLogger1 (F2) : PartLogger
+
+IE - PartStatistics / KI
+* NextComponent : PartLogger
+
+IE - PartLogger / KI
+* NextComponent : PartSink
+
+IE - CutQ / KI
+* DataSource : this.obj.StateTimes("RCutQ")/1[min]
+# execute e observe o relatório gerado
+# no arquivo de extensão .log
+
+IE - CutQ / KI
+* DataSource : { 'this.obj.StateTimes("RCutQ")/1[min]' }
+{ 'this.obj.StateTimes("RCutS")/1[min]' }
+{ 'this.obj.StateTimes("RFoldQ")/1[min]' }
+{ 'this.obj.StateTimes("RFoldS")/1[min]' }

@@ -1,0 +1,222 @@
+### Author
+
+David Custódio de Sena
+e-mail : sena@ufersa.edu.br
+
+### Reviewer (optional)
+
+Cristiano Luís Turbino de França e Silva
+e-mail: cristianoltfs@gmail.com
+
+### Video (optional)
+
+https....
+
+### Description
+
+### List of acronyms (standard)
+
+MB = Model Builder
+OS = Object Selector
+IE = Input Editor
+KI = Key Inputs
+MR = Multiple Runs
+OP = Options
+OV = Output Viewer
+RM = Remove Element
+* = modify Value/Name or show
+() = Keyboard Shortcut
+
+### Configure simmulation
+
+Units / TimeUnit / min
+
+IE - Title / KI
+* Format : Mechanical Metal Industry
+
+OS / Simulation / IE - Simulation / OP
+* AttributeDefinitionList : { MeanCutTime  10[min] }
+{ SDCutTime  1[min] }
+{ MeanFoldTime  15[min] }
+{ SDFoldTime  1.5[min] }
+* CustomOutputList : { OperatorsCut  1 }
+{ OperatorsFold  1 }
+
+### Model building
+
+MB-OS / Process Flow / SimEntity
+* SimEntity1 (F2) : Part
+
+MB-OS / Process Flow / EntityGenerator
+* EntityGenerator1 (F2) : PartGenerator
+
+MB-OS / Process Flow / Queue
+* Queue1 (F2) : CutQ
+
+MB-OS / Process Flow / EntityProcessor
+* EntityProcessor1 (F2): CutP
+
+MB-OS / Resource Objects / Resource
+* Resource1 (F2): CutW
+
+MB-OS / Probability Distribution / NormalDistribution
+* NormalDistribution1 (F2): CutT
+
+MB-OS / Process Flow / Queue
+* Queue1 (F2) : FoldQ
+
+MB-OS / Process Flow / EntityProcessor
+* EntityProcessor1 (F2) : FoldP
+
+MB-OS / Resource Objects / Resource
+* Resource1 (F2): FoldW
+
+MB-OS / Probability Distribution / NormalDistribution
+* NormalDistribution1 (F2): FoldT
+
+MB-OS / Process Flow / EntitySink
+* EntitySink1 (F2) : PartSink
+
+IE - CutT / KI
+* UnitType : TimeUnit
+* Mean : [Simulation].MeanCutTime
+* StandardDeviation : [Simulation].SDCutTime
+
+IE - FoldT / KI
+* UnitType : TimeUnit
+* Mean : [Simulation].MeanFoldTime
+* StandardDeviation : [Simulation].SDFoldTime
+
+IE - PartGenerator / KI
+* NextComponent : CutQ
+* InterArrivalTime : 5 min
+* PrototypeEntity : Part
+* MaxNumber : 20
+
+IE - CutQ / Format
+* MaxPerLine : 4
+* MaxRows : 4
+
+IE - CutP / KI
+* NextComponent : FoldQ
+* WaitQueue : CutQ
+* ResourceList : CutW
+* Capacity : [Simulation].OperatorsCut
+* ServiceTime : CutT
+
+IE - CutW / KI
+* Capacity : [Simulation].OperatorsCut
+
+IE - FoldQ / Format
+* MaxPerLine : 4
+* MaxRows : 4
+
+IE - FoldP / KI
+* NextComponent : PartSink
+* WaitQueue : FoldQ
+* ResourceList : FoldW
+* Capacity : [Simulation].OperatorsFold
+* ServiceTime : FoldT
+
+IE - FoldW / KI
+* Capacity : [Simulation].OperatorsFold
+
+### Prepare Report
+
+IE - Simulation / KI
+* RunOutPutList : { [Simulation].SimTime/1[h] }
+{ '[CutP].StateTimes("Working")/[Simulation].SimTime' }
+{ [CutQ].AverageQueueTime/1[h] }
+{ '[FoldP].StateTimes("Working")/[Simulation].SimTime' }
+{ [FoldQ].AverageQueueTime/1[h] }
+
+IE - Simulation / OP
+* PauseCondition : [PartSink].NumberAdded == 20
+* ExitAtPauseCondition : TRUE
+
+### Result after running in file .dat
+[Simulation].SimTime/1[h] : 5.069415929166666
+[CutP].StateTimes("Working")/[Simulation].SimTime : 0.6506127004190007
+[CutQ].AverageQueueTime/1[h] : 0.7940932536805556
+[FoldP].StateTimes("Working")/[Simulation].SimTime : 0.9641264159121767
+[FoldQ].AverageQueueTime/1[h] : 0.6913160513333335
+
+### Performing Multiple Replications
+
+OS / Simulation / IE - Simulation / MR
+* RunIndexDefinitionList : 10
+* StartingRunNumber : 1
+* EndingRunNumber : 10
+
+IE - Simulation / KI
+* GlobalSubstreamSeed : this.RunNumber
+* RunOutPutList : { this.RunIndex }
+{ [Simulation].SimTime/1[h] }
+{ '[CutP].StateTimes("Working")/[Simulation].SimTime' }
+{ [CutQ].AverageQueueTime/1[h] }
+{ '[FoldP].StateTimes("Working")/[Simulation].SimTime' }
+{ [FoldQ].AverageQueueTime/1[h] }
+
+# run and observe the generated report
+# in the .dat extension file
+
+### External Inputs
+
+##Creat a external fila .txt extension / Inputs.txt
+#OperatorsCut   OperatorsFold
+1   1
+
+MB-OS / Basic Objects / FileToMatrix
+* FileToMatrix1 : RunInputs
+
+IE - RunInputs / KI
+* Data : Inputs.csv
+
+IE - RunInputs / OP
+* CustomOutputList : { data  this.Value(1) }
+{ OperatorsCut  this.data(1) }
+{ OperatorsFold  this.data(2) }
+
+IE - CutP / KI
+* Capacity : [RunInputs].OperatorsCut
+
+IE - CutW / KI
+* Capacity : [RunInputs].OperatorsCut
+
+IE - FoldP / KI
+* Capacity : [RunInputs].OperatorsFold
+
+IE - FoldW / KI
+* Capacity : [RunInputs].OperatorsFold
+
+# run and observe the generated report
+# in the .dat extension file
+
+### Multiplus Scenarios
+
+##Creat a external fila .csv extension
+#OperatorsCut OperatorsFold
+1 1
+1 2
+2 1
+2 3
+3 2
+
+IE - Simulation / MR
+* RunIndexDefinitionList : 5 10
+* EndingRunNumber : 50
+
+IE - Simulation / KI
+* GlobalSubstreamSeed : this.RunIndex(2)
+* RunOutputList : { this.RunIndex(1) }
+{ this.RunIndex(2) }
+{ [Simulation].SimTime/1[h] }
+{ '[CutP].StateTimes("Working")/[Simulation].SimTime' }
+{ [CutQ].AverageQueueTime/1[h] }
+{ '[FoldP].StateTimes("Working")/[Simulation].SimTime' }
+{ [FoldQ].AverageQueueTime/1[h] }
+
+IE - RunInputs / OP
+* CustomOutputList : { data  [RunInputs].Value([Simulation].RunIndex(1)) }
+{ OperatorsCut  this.data(1) }
+{ OperatorsFold  this.data(2) }

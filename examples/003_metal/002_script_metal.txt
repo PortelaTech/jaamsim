@@ -1,0 +1,129 @@
+### Author
+
+Cristiano Luís Turbino de França e Silva
+e-mail: cristianoltfs@gmail.com
+
+### Reviewer (optional)
+
+### Video (optional)
+
+https://www.youtube.com/watch?v=3DnQt3Fw1Fo&list=PLRvwRusArl39IYHrsQRj89onSVvFeWIIP&index=12
+
+### Description
+
+to be continued...
+
+### List of acronyms (standard)
+
+MB = Model Builder
+OS = Object Selector
+IE = Input Editor
+KI = Key Inputs
+OV = Output Viewer
+* = modify Value/Name or show
+
+### Configure simmulation
+
+Units / TimeUnit / min
+
+### Model building
+
+OS-IE / Simulation / KI
+* PrintReport : TRUE
+# execute e observe o relatório gerado
+# no arquivo de extensão .rep
+
+MB-OS / Process Flow / Statistics
+* Statistics1 (F2) : PartStatistics
+
+IE - FoldS / KI
+* NextComponent : PartStatistics
+
+IE - PartStatistics / KI
+* NextComponent : PartSink
+* UnitType : TimeUnit
+* SampleValue : this.obj.TotalTime
+
+OS-IE / Simulation / KI
+* RunOutputList : { this.RunNumber }
+{ [PartStatistics].SampleAverage/1[min] }
+{ [PartStatistics].SampleMinimum/1[min] }
+{ [PartStatistics].SampleMaximum/1[min] }
+{ [PartStatistics].SampleStandardDeviation/1[min] }
+{ [PartStatistics].StandardDeviationOfTheMean/1[min] }
+{ [PartStatistics].TotalTime }
+{ [PartStatistics].TimeAverage }
+{ [PartStatistics].TimeStandardDeviation }
+{ [PartStatistics].NumberProcessed }
+# execute e observe o relatório gerado
+# no arquivo de extensão .dat
+
+IE - CutQ / Options
+* StateAssignment : RCutQ
+
+OS-IE / Simulation / KI
+* RunOutputList : { this.RunNumber }
+{ [PartStatistics].SampleAverage/1[min] }
+{ [PartStatistics].SampleMinimum/1[min] }
+{ [PartStatistics].SampleMaximum/1[min] }
+{ [PartStatistics].SampleStandardDeviation/1[min] }
+{ [PartStatistics].StandardDeviationOfTheMean/1[min] }
+{ [PartStatistics].TotalTime }
+{ [PartStatistics].TimeAverage }
+{ [PartStatistics].TimeStandardDeviation }
+{ [PartStatistics].NumberProcessed }
+{ [PartStatistics].EntityTimeAverage("RCutQ") }
+
+IE - PartStatistics / KI
+* RecordEntityStateTimes : TRUE
+# execute e observe o relatório gerado
+# no arquivo de extensão .dat
+
+IE - CutS / Options
+* StateAssignment : RCutS
+
+IE - FoldQ / Options
+* StateAssignment : RFoldQ
+
+IE - FoldS / Options
+* StateAssignment : RFoldS
+
+OS-IE / Simulation / KI
+* RunOutputList : { this.RunNumber }
+{ [PartStatistics].SampleAverage/1[min] }
+{ [PartStatistics].SampleMinimum/1[min] }
+{ [PartStatistics].SampleMaximum/1[min] }
+{ [PartStatistics].SampleStandardDeviation/1[min] }
+{ [PartStatistics].StandardDeviationOfTheMean/1[min] }
+{ [PartStatistics].TotalTime }
+{ [PartStatistics].TimeAverage }
+{ [PartStatistics].TimeStandardDeviation }
+{ [PartStatistics].NumberProcessed }
+{ [PartStatistics].EntityTimeAverage("RCutQ") }
+{ [PartStatistics].EntityTimeAverage("RCutS") }
+{ [PartStatistics].EntityTimeAverage("RFoldQ") }
+{ [PartStatistics].EntityTimeAverage("RFoldS") }
+# execute e observe o relatório gerado
+# no arquivo de extensão .dat
+
+OS-IE / Simulation / KI
+* RunOutputList : { this.RunNumber }
+{ [PartStatistics].EntityTimeAverage("RCutQ") }
+{ [PartStatistics].EntityTimeAverage("RCutS") }
+{ [PartStatistics].EntityTimeAverage("RFoldQ") }
+{ [PartStatistics].EntityTimeAverage("RFoldS") }
+{ [CutQ].QueueLengthAverage }
+{ [CutQ].QueueLengthMaximum }
+{ [CutQ].QueueLengthTimes }
+# execute e observe o relatório gerado
+# no arquivo de extensão .dat
+
+OS-IE / Simulation / Multiple Runs
+* RunIndexDefinitionList : 10
+* StartingRunNumber : 1
+* EndingRunNumber : 10
+
+OS-IE / Simulation / KI
+* GlobalSubstreamSeed : this.RunNumber
+# Exemplo executando a simulção 10 vezes
+# no arquivo de extensão .dat

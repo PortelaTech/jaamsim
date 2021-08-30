@@ -1,0 +1,152 @@
+### Author
+
+David Custódio de Sena
+e-mail: davidc.sena@gmail.com
+
+### Reviewer (optional)
+
+Cristiano Luís Turbino de França e Silva
+e-mail: cristianoltfs@gmail.com
+
+### Video (optional)
+
+https://www.youtube.com/watch?v=iJBgi3JmhWY&list=PLRvwRusArl39IYHrsQRj89onSVvFeWIIP&index=10
+
+### Description
+
+Call answering model.
+
+The connection can be rejected if the capacity is full.
+
+The call can be abandoned if a waiting period is reached.
+
+Parameters:
+
+Call arrival rate = 1.5 per second (1 call every 0.67 seconds).
+
+Call abandonment time = 100 seconds.
+
+Number of Operators = 100.
+
+Service time = Triangular (100/2, 100, 2 * 100).
+
+Maximum queue capacity = 50.
+
+### List of acronyms (standard)
+
+MB = Model Builder
+OS = Object Selector
+IE = Input Editor
+KI = Key Inputs
+OV = Output Viewer
+* = modify Value/Name or show
+
+### Configure simmulation - Global and probabilistic variables
+
+IE - Title / KI
+* Format : Attendence Model
+
+OS / Simulation / IE - Simulation / KI
+* RunDuration : 10 h
+
+OS / Simulation / IE - Simulation / Options
+* AttributeDefinitionList : { ArrivalInterval 0.67[s] } { AbandonmentTime 100[s] } { AverageServiceTime 100[s] }
+* CustomOutputList : { Operators 100 }
+
+### Model building
+
+MB-OS / Probability Distributions / TriangularDistribution
+* TriangularDistribution1 (F2) : ServiceTime
+
+IE - ServiceTime / KI
+* UnitType : TimeUnit
+* MinValue : [Simulation].AverageServiceTime/2
+* MaxValue : [Simulation].AverageServiceTime*2
+* Mode : [Simulation].AverageServiceTime
+
+MB-OS / Probability Distributions / ExponentialDestribution
+* ExponentialDestribution1 (F2) : AbandonmentTime
+
+IE - AbandonmentTime / KI
+* UnitType : TimeUnit
+* Mean : [Simulation].AbandonmentTime
+
+MB-OS / Process Flow / SimEntity
+* SimEntity1 (F2) : Call
+
+IE - Call / Options
+* AttributeDefinitionList : { Type  1 }
+
+MB-OS / Process Flow / EntityGenerator
+* EntityGenerator1 (F2) : EntryCall
+
+IE - EntryCall1 / KI
+* PrototypeEntity : Call
+* InterArrivalTime : [Simulation].ArrivalInterval
+
+MB-OS / Process Flow / Branch
+* Branch1 (F2) : QueueVerification
+
+IE - EntryCall / KI
+* NextComponent : QueueVerification
+
+MB-OS / Process Flow / Queue
+* Queue1 (F2) : QueueAttendance
+
+IE - QueueAttendance / KI
+* RenegeTime : AbondnmentTime
+* MaxValidLenght : 50
+
+MB-OS / Process Flow / EntitySink
+* EntitySink (F2) : FullQueue
+
+IE - QueueVerification / KI
+* NextComponentList : FullQueue QueueAttendance
+* Choice : [QueueAttendance].QueueLength < 50 ? 2:1
+
+MB-OS / Process Flow / EntitySink
+* EntitySink1 (F2) : NotWait
+
+IE - QueueAttendance / KI
+* RenegeDestination : NotWait
+
+IE - QueueAttendance / Format
+* MaxPerLine : 5
+* MaxRows : 5
+
+MB-OS / Process Flow / EntityProcessor
+* EntityProcessor1 (F2) : Attendance
+
+IE - Attendance / KI
+* WaitQueue : QueueAttendance
+
+MB-OS / Resource Objects / Resource
+* Resource1 (F2) : Operator
+
+IE - Operator / KI
+* Capacity : [Simulation].Operators
+
+IE - Attendance / KI
+* ResourceList : Operator
+* Capacity : [Simulation].Operators
+* ServiceTime : ServiceTime
+
+MB-OS / Process Flow / EntitySink
+* EntitySink1 (F2) : Attended
+
+IE - Attendance / KI
+* NextComponent : Attended
+
+### Result after running
+
+OV - FullQueue
+* LinkedComponent / NumberProcessed = 5822
+
+OV - NotWait
+* LinkedComponent / NumberProcessed = 16992
+
+OV - Attended
+* LinkedComponent / NumberProcessed = 30770
+
+OV - QueueAttendance
+* Queue / AverageQueueTime = 35.1685 s
