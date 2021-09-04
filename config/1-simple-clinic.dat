@@ -1,0 +1,4 @@
+Scenario	Replication	[SImulation].RunIndex(1)		[WaitingTime].SampleAverage		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+1	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+2	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+3	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	

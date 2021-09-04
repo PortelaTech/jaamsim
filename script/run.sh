@@ -65,6 +65,7 @@ echo ENVFILE=${ENVFILE}
 
 echo Role=$(script/aws-id.sh)
 docker run -it \
+    --network host \
     --env-file ${ENVFILE} \
     -e AWS_PROFILE=${AWS_PROFILE} \
     -v ${ENVFILE}:${CONTAINER_HOME}/.env \

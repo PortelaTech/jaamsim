@@ -303,28 +303,29 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 	private static final String PAUSE_TOOLTIP = "<html><b>Pause</b></html>";  // Use a small tooltip for Pause so that it does not block the simulation time display
 
 	static {
-		try {
-			if (OSFix.isWindows())
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			else
-				UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		}
-		catch (Exception e) {
-			LogBox.logLine("Unable to change look and feel.");
-		}
+		if (null==System.getenv("IS_HEADLESS")) {
+			try {
+				if (OSFix.isWindows())
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				else
+					UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			} catch (Exception e) {
+				LogBox.logLine("Unable to change look and feel.");
+			}
 
-		try {
-			iconImages.clear();
-			Toolkit toolkit = Toolkit.getDefaultToolkit();
-			iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-16.png")));
-			iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-32.png")));
-			iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-64.png")));
-			iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-128.png")));
+			try {
+				iconImages.clear();
+				Toolkit toolkit = Toolkit.getDefaultToolkit();
+				iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-16.png")));
+				iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-32.png")));
+				iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-64.png")));
+				iconImages.add(toolkit.getImage(GUIFrame.class.getResource("/resources/images/icon-128.png")));
+			} catch (Exception e) {
+				LogBox.logLine("Unable to load icon file.");
+			}
+		} else {
+			System.out.println("IS_HEADLESS");
 		}
-		catch (Exception e) {
-			LogBox.logLine("Unable to load icon file.");
-		}
-
 		shuttingDown = new AtomicBoolean(false);
 		rateLimiter = RateLimiter.create(60);
 	}
@@ -4237,6 +4238,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 			// Minimize model window
 			if (each.equalsIgnoreCase("-h") ||
 			    each.equalsIgnoreCase("-headless")) {
+				System.out.println("HEADLESS");
 				headless = true;
 				batch = true;
 				continue;
