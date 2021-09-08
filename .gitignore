@@ -4,3 +4,4 @@ build.log.old
 *.class
 /bin/
 data/
+.local-maven-repo
