@@ -16,6 +16,6 @@ ENV TZ Pacific/Auckland
 WORKDIR /home
 FROM dev as prod
 
-RUN nohup Xvfb :1 -screen 0 1024x768x16 &> xvfb.log  &
+RUN nohup Xvfb :1 -screen 0 1024x768x16 &> /tmp/xvfb.log  &
 
 ENTRYPOINT ["bash"]

@@ -82,8 +82,10 @@ limitations under the License.
       <fileset dir="${class.dir}"/>
       <fileset dir="${res.dir}"/>
       <fileset file="LICENSE"/>
-      <zipfileset src="jar/log4j-api-2.12.1.jar" includes="org/**/*"/>
-      <zipfileset src="jar/log4j-core-2.12.1.jar" includes="org/**/*"/>
+      <zipfileset src="jar/slf4j-log4j12-1.7.28.jar"/>
+      <zipfileset src="jar/log4j-api-2.6.1.jar"/>
+      <zipfileset src="jar/log4j-core-2.6.1.jar"/>
+      <zipfileset src="jar/log4j-slf4j-impl-2.6.1.jar"/>
       <zipfileset src="jar/gluegen-rt.jar"     includes="jogamp/**/*,com/**/*"/>
       <zipfileset src="jar/gluegen-rt-natives-windows-i586.jar"     includes="natives/**/*"/>
       <zipfileset src="jar/gluegen-rt-natives-windows-amd64.jar"    includes="natives/**/*"/>

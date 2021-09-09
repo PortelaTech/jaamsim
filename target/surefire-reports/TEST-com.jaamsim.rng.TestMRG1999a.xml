@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.jaamsim.rng.TestMRG1999a" time="0.012" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.jaamsim.rng.TestMRG1999a" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
@@ -64,9 +64,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testKnownSubstreams" time="0"/>
-  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testSavedSubstream" time="0"/>
-  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testKnownStreams" time="0"/>
+  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testKnownSubstreams" time="0.001"/>
+  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testSavedSubstream" time="0.003"/>
+  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testKnownStreams" time="0.001"/>
   <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testKnownStates" time="0.001"/>
-  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testCachedSeeds" time="0.011"/>
+  <testcase classname="com.jaamsim.rng.TestMRG1999a" name="testCachedSeeds" time="0.009"/>
 </testsuite>

@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.8.1/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install -DskipTest"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -53,6 +53,7 @@
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="11.0.11"/>
     <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="skipTest" value="true"/>
     <property name="maven.home" value="/usr/local/Cellar/maven/3.8.1/libexec"/>
     <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2021-04-20"/>
@@ -68,17 +69,17 @@
   <testcase classname="com.jaamsim.math.TestVec3d" name="testMultAndTrans" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testAdd" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testDot" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec3d" name="testMax" time="0.001"/>
+  <testcase classname="com.jaamsim.math.TestVec3d" name="testMax" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testMin" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testMul" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec3d" name="testSet" time="0.001"/>
+  <testcase classname="com.jaamsim.math.TestVec3d" name="testSet" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testSub" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testScale" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testMult" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testConstructors" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec3d" name="testNormDegen" time="0"/>
+  <testcase classname="com.jaamsim.math.TestVec3d" name="testNormDegen" time="0.001"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testNormalize" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testCross3" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec3d" name="testEquals" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec3d" name="testString" time="0"/>
+  <testcase classname="com.jaamsim.math.TestVec3d" name="testString" time="0.001"/>
 </testsuite>

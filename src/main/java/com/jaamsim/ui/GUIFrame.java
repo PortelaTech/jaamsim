@@ -147,14 +147,15 @@ import com.jaamsim.rng.MRG1999a;
 import com.jaamsim.units.DimensionlessUnit;
 import com.jaamsim.units.DistanceUnit;
 import com.jaamsim.units.TimeUnit;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The main window for a Graphical Simulation.  It provides the controls for managing then
  * EventManager (run, pause, ...) and the graphics (zoom, pan, ...)
  */
 public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListener {
-	private static final Logger LOG = Logger.getLogger( GUIFrame.class.getName() );
+	//private static final Logger LOG = LoggerFactory.getLogger(GUIFrame.class);
 
 	private static GUIFrame instance;
 
@@ -326,7 +327,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 				LogBox.logLine("Unable to load icon file.");
 			}
 		} else {
-			LOG.debug("IS_HEADLESS");
+			System.out.println("IS_HEADLESS");
 		}
 		shuttingDown = new AtomicBoolean(false);
 		rateLimiter = RateLimiter.create(60);
@@ -4240,7 +4241,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 			// Minimize model window
 			if (each.equalsIgnoreCase("-h") ||
 			    each.equalsIgnoreCase("-headless")) {
-				LOG.debug("HEADLESS");
+				System.out.println("HEADLESS");
 				headless = true;
 				batch = true;
 				continue;
@@ -4309,7 +4310,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 			// Begin initializing the rendering system
 			RenderManager.initialize(SAFE_GRAPHICS);
 		}
-		LOG.debug("Simulation Environment Loaded");
+		System.out.println("Simulation Environment Loaded");
 		LogBox.logLine("Simulation Environment Loaded");
 
 		sim.setBatchRun(batch);
@@ -4334,7 +4335,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 				loadFile = abs.getAbsoluteFile();
 			else
 				loadFile = new File(user, configFiles.get(i));
-			LOG.debug(loadFile.getAbsolutePath());
+			System.out.println(loadFile.getAbsolutePath());
 			Throwable t = GUIFrame.configure(loadFile);
 			if (t != null) {
 				// Hide the splash screen
@@ -4379,7 +4380,7 @@ public class GUIFrame extends OSFixJFrame implements EventTimeListener, GUIListe
 		if (batch) {
 			if (sim.getNumErrors() > 0)
 				GUIFrame.shutdown(0);
-			LOG.debug("sim.start()");
+			System.out.println("sim.start()");
 			sim.start();
 			return;
 		}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.jaamsim.basicsim.TestSimulation" time="16.005" errors="1" skipped="0">
+<testsuite tests="6" failures="0" name="com.jaamsim.basicsim.TestSimulation" time="5.129" errors="2" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.8.1/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install -DskipTest"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -53,6 +53,7 @@
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="11.0.11"/>
     <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="skipTest" value="true"/>
     <property name="maven.home" value="/usr/local/Cellar/maven/3.8.1/libexec"/>
     <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2021-04-20"/>
@@ -64,11 +65,58 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAPI" time="3.255"/>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testExampleModels" time="12.11"/>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAllDefineableTypes" time="0.114"/>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testSimultaneousRuns" time="0.242"/>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testSimpleInputFile" time="0.105">
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAPI" time="2.271"/>
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testExampleModels" time="0.043">
+    <error message="org/apache/logging/log4j/util/ReflectionUtil" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/apache/logging/log4j/util/ReflectionUtil
+	at org.apache.logging.slf4j.Log4jLoggerFactory.getContext(Log4jLoggerFactory.java:42)
+	at org.apache.logging.log4j.spi.AbstractLoggerAdapter.getLogger(AbstractLoggerAdapter.java:47)
+	at org.apache.logging.slf4j.Log4jLoggerFactory.getLogger(Log4jLoggerFactory.java:29)
+	at org.slf4j.LoggerFactory.getLogger(LoggerFactory.java:363)
+	at org.slf4j.LoggerFactory.getLogger(LoggerFactory.java:388)
+	at com.jaamsim.ui.GUIFrame.&lt;clinit&gt;(GUIFrame.java:158)
+	at com.jaamsim.basicsim.TestSimulation.testExampleModels(TestSimulation.java:190)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: java.lang.ClassNotFoundException: org.apache.logging.log4j.util.ReflectionUtil
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 36 more
+</error>
+    <system-out>
+Example Models:
+</system-out>
+  </testcase>
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAllDefineableTypes" time="2.097"/>
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testSimultaneousRuns" time="0.333"/>
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testSimpleInputFile" time="0.153">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.jaamsim.basicsim.TestSimulation.testSimpleInputFile(TestSimulation.java:97)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -102,5 +150,5 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </error>
   </testcase>
-  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAllEditableInputs" time="0.179"/>
+  <testcase classname="com.jaamsim.basicsim.TestSimulation" name="testAllEditableInputs" time="0.232"/>
 </testsuite>

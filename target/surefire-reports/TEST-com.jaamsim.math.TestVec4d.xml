@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="com.jaamsim.math.TestVec4d" time="0.003" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="com.jaamsim.math.TestVec4d" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.8.1/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install -DskipTest"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -53,6 +53,7 @@
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="11.0.11"/>
     <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="skipTest" value="true"/>
     <property name="maven.home" value="/usr/local/Cellar/maven/3.8.1/libexec"/>
     <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2021-04-20"/>
@@ -69,15 +70,15 @@
   <testcase classname="com.jaamsim.math.TestVec4d" name="testDot" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testMax" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testMin" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec4d" name="testMul" time="0"/>
+  <testcase classname="com.jaamsim.math.TestVec4d" name="testMul" time="0.001"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testSet" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testSub" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testScale" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testMult" time="0.001"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testConstructors" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec4d" name="testNormDegen" time="0.001"/>
+  <testcase classname="com.jaamsim.math.TestVec4d" name="testNormDegen" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testNormalize" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testCross3" time="0"/>
-  <testcase classname="com.jaamsim.math.TestVec4d" name="testEquals" time="0.001"/>
+  <testcase classname="com.jaamsim.math.TestVec4d" name="testEquals" time="0"/>
   <testcase classname="com.jaamsim.math.TestVec4d" name="testString" time="0"/>
 </testsuite>

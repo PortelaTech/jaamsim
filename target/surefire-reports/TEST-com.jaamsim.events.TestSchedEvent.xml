@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.jaamsim.events.TestSchedEvent" time="6.002" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.jaamsim.events.TestSchedEvent" time="6.524" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
@@ -64,11 +64,11 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityKillLast" time="1.933"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testPriorityEvents" time="0.592"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testFIFOEvents" time="0.065"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityKillFirst" time="1.416"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testTimeEvents" time="0.542"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityCreate" time="1.362"/>
-  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testLIFOEvents" time="0.092"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityKillLast" time="1.973"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testPriorityEvents" time="0.5"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testFIFOEvents" time="0.058"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityKillFirst" time="1.363"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testTimeEvents" time="0.512"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testEntityCreate" time="1.847"/>
+  <testcase classname="com.jaamsim.events.TestSchedEvent" name="testLIFOEvents" time="0.271"/>
 </testsuite>
