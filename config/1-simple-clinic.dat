@@ -1,4 +1,14 @@
 Scenario	Replication	[SImulation].RunIndex(1)		[WaitingTime].SampleAverage		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
 1	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+0	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+Scenario	Replication	[SImulation].RunIndex(1)		[WaitingTime].SampleAverage		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+1	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
 2	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
 3	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+4	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+5	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+6	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+7	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+8	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+9	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	
+10	1	[SImulation].RunIndex(1)		0.25[h]		[TImeInSystem].SampleAverage		[WaitingRoom].QueueLengthAveragee	

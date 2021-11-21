@@ -1,0 +1,13 @@
+Simulation	SoftwareName	JaamSim	-
+Simulation	SoftwareVersion	2021-05	-
+Simulation	ConfigurationFile	/home/cafemodel.cfg	-
+Simulation	ScenarioNumber	1.0	-
+Simulation	ScenarioIndex	{ 1 }	-
+Simulation	ReplicationNumber	1.0	-
+Simulation	RunNumber	1.0	-
+Simulation	RunIndex	{ 1 }	-
+Simulation	PresentTimeAndDate	Nov 22, 2021 09:14	-
+Simulation	InitializationDuration	0.0	h
+Simulation	RunDuration	8760.0	h
+Simulation	PresentSimulationTime	8760.0	h
+
